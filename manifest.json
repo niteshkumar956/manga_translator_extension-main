@@ -1,0 +1,53 @@
+{
+  "manifest_version": 2,
+  "name": "Manga Translator",
+  "version": "1.0",
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self';"
+  },
+  "description": "A simple extension to translate text on a page.",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting",
+    "webRequest",
+    "webNavigation",
+    "https://translation.googleapis.com/"
+  ],
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/translate.png"
+    }
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/translate.png"
+    }
+  },
+  "background": {
+    "service_worker": "scripts/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["scripts/content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "icons": {
+    "16": "images/translate.png",
+    "48": "images/translate.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "tesseract-core.wasm.js",
+        "tesseract-core.wasm",
+        "tesseract.js"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

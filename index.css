@@ -1,0 +1,19 @@
+#translateButton {
+    background-color: rgb(11, 198, 255);
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    user-select: none;
+    margin-top: 10px;
+    width: 100%;
+}
+
+#translateButton:hover {
+    background-color: #3498db;
+}
+
+#translateButton:active {
+    background-color: #2980b9;
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Translator</title>
+    <script src="scripts/popup.js" defer></script>
+    <link href="index.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+    <label for="srcLanguage">Page Language:</label>
+    <select id="srcLanguage"></select>
+
+    <label for="destLanguage">Preferred Language:</label>
+    <select id="destLanguage"></select>
+
+    <button id="translateButton">Translate</button>
+
+    <script>
+        // Language options
+        const languages = [
+            { code: "auto", name: "Automatic" },
+            { code: "af", name: "Afrikaans" },
+            { code: "sq", name: "Albanian" },
+            { code: "ar", name: "Arabic" },
+            { code: "en", name: "English" },
+            { code: "pt", name: "Portuguese" },
+            { code: "es", name: "Spanish" },
+            { code: "fr", name: "French" },
+            { code: "de", name: "German" },
+            { code: "zh-CN", name: "Chinese (Simplified)" },
+            { code: "ja", name: "Japanese" }
+            // Add more languages as needed
+        ];
+
+        const populateDropdown = (dropdownId) => {
+            const dropdown = document.getElementById(dropdownId);
+            languages.forEach(({ code, name }) => {
+                const option = document.createElement("option");
+                option.value = code;
+                option.textContent = name;
+                dropdown.appendChild(option);
+            });
+        };
+
+        // Populate both dropdowns on load
+        document.addEventListener("DOMContentLoaded", () => {
+            populateDropdown("srcLanguage");
+            populateDropdown("destLanguage");
+        });
+    </script>
+</body>
+</html>
